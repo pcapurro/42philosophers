@@ -62,24 +62,24 @@ void	ft_release_forks(t_philo_info *philo_str)
 	}
 }
 
-int	ft_freeze_thread(t_philo_info *m_str, int time)
+int	ft_freeze_thread(t_philo_info *philo_str, int time)
 {
 	time_t	start_timestamp;
 	time_t	actual_timestamp;
 
-	pthread_mutex_lock(&*(m_str->global_auth));
+	pthread_mutex_lock(&*(philo_str->global_auth));
 	start_timestamp = ft_get_actual_time() * 1000;
 	actual_timestamp = ft_get_actual_time() * 1000;
-	while (*(m_str->end_status) != 1)
+	while (*(philo_str->end_status) != 1)
 	{
 		if (actual_timestamp - start_timestamp >= time)
 			break ;
-		pthread_mutex_unlock(&*(m_str->global_auth));
+		pthread_mutex_unlock(&*(philo_str->global_auth));
 		usleep(25);
 		actual_timestamp = ft_get_actual_time() * 1000;
-		pthread_mutex_lock(&*(m_str->global_auth));
+		pthread_mutex_lock(&*(philo_str->global_auth));
 	}
-	pthread_mutex_unlock(&*(m_str->global_auth));
+	pthread_mutex_unlock(&*(philo_str->global_auth));
 	return (0);
 }
 

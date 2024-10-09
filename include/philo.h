@@ -43,6 +43,8 @@ void				ft_think(t_philo_info *philo_str);
 int					ft_init_sim(t_info *m_str);
 void	            ft_load_time(t_info *m_str);
 int					ft_detach_philos(t_info *m_str, pthread_t *philo_ids);
+
+int					ft_all_knowing_checker(t_info *m_str);
 int					ft_monitor_sim(t_info *m_str, pthread_t *philo_ids);
 int					ft_monitor_out(t_info *m_str);
 
@@ -51,11 +53,11 @@ void				*ft_init_philo_strs(t_info *m_str);
 void				*ft_init_mutex_table(t_info *m_str);
 
 time_t				ft_get_actual_time(void);
+int					ft_simulation_state(t_philo_info *philo_str);
+
 void				ft_starve_if_necessary(t_philo_info *philo_str);
 int					ft_print_state_change(t_philo_info *philo_str, int nb);
-int					ft_freeze_thread(t_philo_info *m_str, int time);
-int					ft_all_knowing_checker(t_info *m_str);
-int					ft_simulation_state(t_philo_info *philo_str);
+int					ft_freeze_thread(t_philo_info *philo_str, int time);
 void				ft_release_forks(t_philo_info *philo_str);
 
 int					ft_strlen(char *str);
