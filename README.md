@@ -6,11 +6,10 @@ The routine can be executed forever, but the simulation stops if a philosopher d
 
 Semaphores, Mutex and Barriers are also used, mainly for thread synchronisation but also to avoid data races.
 
-Logs are displayed during the simulation, in the following format:
-[actual timestamp]* [philosopher id] [action]
-__Example__ : "410 2 is thinking"
+Logs are displayed during the simulation, in the following format: \[actual_timestamp] \[philosopher_id] \[action].
 
 All the paramaters of the simulation can be set by the user.
 
-__Usage__: ./philo [number of philosophers] [time to die] [time to eat] [time to sleep] ([meals number])
+Usage: `./philo [numbers_of_philosophers] [time_to_die] [time_to_eat] [time_to_sleep] [meals_number]`
+
 Time values are in milliseconds and can't exceed 60. Last argument is optionnal.
