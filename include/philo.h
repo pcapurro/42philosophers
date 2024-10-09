@@ -41,7 +41,7 @@ void				ft_sleep(t_philo_info *philo_str);
 void				ft_think(t_philo_info *philo_str);
 
 int					ft_init_sim(t_info *m_str);
-void	            ft_load_time(t_info *m_str);
+void				ft_load_time(t_info *m_str);
 int					ft_detach_philos(t_info *m_str, pthread_t *philo_ids);
 
 int					ft_all_knowing_checker(t_info *m_str);
