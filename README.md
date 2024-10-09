@@ -8,10 +8,9 @@ Semaphores, Mutex and Barriers are also used, mainly for thread synchronisation 
 
 Logs are displayed during the simulation, in the following format:
 [actual timestamp]* [philosopher id] [action]
-* = in ms and since the begining of the simulation
 __Example__ : "410 2 is thinking"
 
 All the paramaters of the simulation can be set by the user.
 
-Usage: ./philo [number of philosophers] [time to die] [time to eat] [time to sleep] ([meals number])
+__Usage__: ./philo [number of philosophers] [time to die] [time to eat] [time to sleep] ([meals number])
 Time values are in milliseconds and can't exceed 60. Last argument is optionnal.
