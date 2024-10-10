@@ -17,7 +17,7 @@
 int					main(int argc, char **argv);
 
 char				**ft_clean_input(int argc, char **argv);
-void				*ft_init_struct(t_info *m_str, char **args);
+void				ft_init_struct(t_info *m_str, char **args);
 
 void				ft_destroy_everything(t_info *m_str);
 

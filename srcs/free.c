@@ -25,6 +25,7 @@ void	ft_destroy_everything(t_info *m_str)
 		sem_close(m_str->print_auth);
 		sem_unlink("/print");
 	}
-	if (m_str->philo_array)
+	if (m_str->philo_array != NULL)
 		free(m_str->philo_array);
+	free(m_str);
 }
