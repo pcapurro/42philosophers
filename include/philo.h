@@ -38,6 +38,7 @@ int					ft_monitor_out(t_info *m_str);
 
 int					ft_init_philo_data(t_info *m_str);
 void				ft_init_semaphores(t_info *m_str);
+void				ft_init_barrier(t_info *m_str);
 void				*ft_init_philo_strs(t_info *m_str);
 void				*ft_init_mutex_table(t_info *m_str);
 

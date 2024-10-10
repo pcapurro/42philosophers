@@ -56,6 +56,7 @@ void	*ft_philosophize(void *old_philo_str)
 	t_philo_info	*philo_str;
 
 	philo_str = (t_philo_info *)old_philo_str;
+	pthread_barrier_wait(philo_str->top_start);
 	while (ft_simulation_state(philo_str) == 0)
 	{
 		ft_take_forks(philo_str);

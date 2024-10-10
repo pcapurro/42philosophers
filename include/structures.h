@@ -6,48 +6,52 @@
 
 typedef struct s_philo_info
 {
-	int				id;
+	int					id;
 
-	int				l_fork;
-	int				r_fork;
+	int					l_fork;
+	int					r_fork;
 
-	int				forks_taken;
+	int					forks_taken;
 
-	int				philo_nb;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				notepme;
+	int					philo_nb;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					notepme;
 
-	int				meals_nb;
+	int					meals_nb;
 
-	time_t			last_meal;
-	time_t			start_time;
+	time_t				last_meal;
+	time_t				start_time;
 
-	int				im_out;
-	int				*end_status;
+	int					im_out;
+	int					*end_status;
 
-	sem_t			*print_auth;
-	sem_t			*global_auth;
-	pthread_mutex_t	*mutex_table;
+	sem_t				*print_auth;
+	sem_t				*global_auth;
+	pthread_mutex_t		*mutex_table;
+
+	pthread_barrier_t	*top_start;
 
 }	t_philo_info;
 
 typedef struct s_info
 {
-	int				philo_nb;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				notepme;
+	int					philo_nb;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					notepme;
 
-	t_philo_info	*philo_array;
+	t_philo_info		*philo_array;
 
-	int				end_status;
+	int					end_status;
 
-	sem_t			*print_auth;
-	sem_t			*global_auth;
-	pthread_mutex_t	*mutex_table;
+	sem_t				*print_auth;
+	sem_t				*global_auth;
+	pthread_mutex_t		*mutex_table;
+
+	pthread_barrier_t	*top_start;
 
 }	t_info;
 

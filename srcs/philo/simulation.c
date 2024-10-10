@@ -58,7 +58,6 @@ int	ft_init_sim(t_info *m_str)
 	philo_ids = malloc(sizeof(pthread_t) * m_str->philo_nb);
 	if (!philo_ids || ft_init_philo_data(m_str) != 0)
 		return (1);
-	ft_load_time(m_str);
 	while (i < m_str->philo_nb)
 	{
 		if (pthread_create(&philo_ids[i], NULL, ft_philosophize,
@@ -72,5 +71,7 @@ int	ft_init_sim(t_info *m_str)
 		}
 		i++;
 	}
+	ft_load_time(m_str);
+	pthread_barrier_wait(m_str->top_start);
 	return (ft_monitor_sim(m_str, philo_ids));
 }
