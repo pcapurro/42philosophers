@@ -17,13 +17,13 @@ void	ft_starve_if_necessary(t_philo_info *philo_str)
 
 int	ft_simulation_state(t_philo_info *philo_str)
 {
-	pthread_mutex_lock(&philo_str->global_auth[0]);
+	sem_wait(philo_str->global_auth);
 	if (*(philo_str->end_status) == 1)
 	{
-		pthread_mutex_unlock(&philo_str->global_auth[0]);
+		sem_post(philo_str->global_auth);
 		return (1);
 	}
-	pthread_mutex_unlock(&philo_str->global_auth[0]);
+	sem_post(philo_str->global_auth);
 	if (philo_str->notepme != 0)
 	{
 		if (philo_str->meals_nb == philo_str->notepme)
@@ -55,19 +55,19 @@ int	ft_freeze_thread(t_philo_info *philo_str, int time)
 	time_t	start_timestamp;
 	time_t	actual_timestamp;
 
-	pthread_mutex_lock(&*(philo_str->global_auth));
+	sem_wait(philo_str->global_auth);
 	start_timestamp = ft_get_actual_time() * 1000;
 	actual_timestamp = ft_get_actual_time() * 1000;
 	while (*(philo_str->end_status) != 1)
 	{
 		if (actual_timestamp - start_timestamp >= time)
 			break ;
-		pthread_mutex_unlock(&*(philo_str->global_auth));
+		sem_post(philo_str->global_auth);
 		usleep(25);
+		sem_wait(philo_str->global_auth);
 		actual_timestamp = ft_get_actual_time() * 1000;
-		pthread_mutex_lock(&*(philo_str->global_auth));
 	}
-	pthread_mutex_unlock(&*(philo_str->global_auth));
+	sem_post(philo_str->global_auth);
 	return (0);
 }
 
@@ -78,7 +78,7 @@ int	ft_print_state_change(t_philo_info *philo_str, int nb)
 
 	time = ft_get_actual_time();
 	timestamp = time - philo_str->start_time;
-	pthread_mutex_lock(&*(philo_str->print_auth));
+	sem_wait(philo_str->print_auth);
 	if (ft_simulation_state(philo_str) == 0)
 	{
 		if (nb == 1)
@@ -92,9 +92,9 @@ int	ft_print_state_change(t_philo_info *philo_str, int nb)
 	}
 	else
 	{
-		pthread_mutex_unlock(&*(philo_str->print_auth));
+		sem_post(philo_str->print_auth);
 		return (1);
 	}
-	pthread_mutex_unlock(&*(philo_str->print_auth));
+	sem_post(philo_str->print_auth);
 	return (0);
 }

@@ -11,6 +11,8 @@ void	*ft_init_struct(t_info *m_str, char **args)
 	else
 		m_str->notepme = ft_atoi(args[4]);
 	m_str->end_status = 0;
+	m_str->print_auth = NULL;
+	m_str->global_auth = NULL;
 	return (m_str);
 }
 

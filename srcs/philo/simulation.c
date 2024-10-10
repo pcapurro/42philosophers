@@ -23,9 +23,9 @@ int	ft_detach_philos(t_info *m_str, pthread_t *philo_ids)
 	{
 		if (pthread_detach(philo_ids[i++]) != 0)
 		{
-			pthread_mutex_lock(&(m_str->global_auth));
+			sem_wait(m_str->global_auth);
 			m_str->end_status = 1;
-			pthread_mutex_unlock(&(m_str->global_auth));
+			sem_post(m_str->global_auth);
 			ft_putstr_fd("Error! A thread detachment failed.\n", 2);
 			return (1);
 		}
@@ -64,9 +64,9 @@ int	ft_init_sim(t_info *m_str)
 		if (pthread_create(&philo_ids[i], NULL, ft_philosophize,
 				&m_str->philo_array[i]) != 0)
 		{
-			pthread_mutex_lock(&(m_str->global_auth));
+			sem_wait(m_str->global_auth);
 			m_str->end_status = 1;
-			pthread_mutex_unlock(&(m_str->global_auth));
+			sem_post(m_str->global_auth);
 			ft_putstr_fd("Error! A thread creation failed.\n", 2);
 			return (1);
 		}

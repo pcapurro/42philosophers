@@ -27,9 +27,9 @@ void	ft_eat(t_philo_info *philo_str)
 {
 	if (ft_simulation_state(philo_str) != 0)
 		return ;
-	pthread_mutex_lock(&philo_str->global_auth[0]);
+	sem_wait(philo_str->global_auth);
 	philo_str->last_meal = ft_get_actual_time();
-	pthread_mutex_unlock(&philo_str->global_auth[0]);
+	sem_post(philo_str->global_auth);
 	if (ft_print_state_change(philo_str, 2) == 1)
 		return ;
 	ft_freeze_thread(philo_str, (philo_str->time_to_eat * 1000));
@@ -64,8 +64,8 @@ void	*ft_philosophize(void *old_philo_str)
 		ft_think(philo_str);
 	}
 	ft_release_forks(philo_str);
-	pthread_mutex_lock(&philo_str->global_auth[0]);
+	sem_wait(philo_str->global_auth);
 	philo_str->im_out++;
-	pthread_mutex_unlock(&philo_str->global_auth[0]);
+	sem_post(philo_str->global_auth);
 	return (NULL);
 }

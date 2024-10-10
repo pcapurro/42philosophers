@@ -22,15 +22,15 @@ int	ft_monitor_sim(t_info *m_str, pthread_t *philo_ids)
 {
 	if (ft_detach_philos(m_str, philo_ids) != 0)
 		return (1);
-	pthread_mutex_lock(&(m_str->global_auth));
+	sem_wait(m_str->global_auth);
 	while (ft_monitor_out(m_str) == 0)
 	{
 		ft_all_knowing_checker(m_str);
-		pthread_mutex_unlock(&(m_str->global_auth));
+		sem_post(m_str->global_auth);
 		usleep(25);
-		pthread_mutex_lock(&(m_str->global_auth));
+		sem_wait(m_str->global_auth);
 	}
-	pthread_mutex_unlock(&(m_str->global_auth));
+	sem_post(m_str->global_auth);
 	return (0);
 }
 

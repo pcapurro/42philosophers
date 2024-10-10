@@ -5,8 +5,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <fcntl.h>
 # include <sys/time.h>
+# include <sys/stat.h>
 # include <pthread.h>
+# include <semaphore.h>
+# include <errno.h>
 
 # include "structures.h"
 
@@ -15,11 +19,7 @@ int					main(int argc, char **argv);
 char				**ft_clean_input(int argc, char **argv);
 void				*ft_init_struct(t_info *m_str, char **args);
 
-int					ft_init_philo_life(t_info *m_str);
-int					ft_start_philo_life(t_info *m_str);
-
 void				ft_destroy_everything(t_info *m_str);
-void				ft_destroy_last_things(t_info *m_str, int i);
 
 void				*ft_philosophize(void *old_philo_str);
 
@@ -37,6 +37,7 @@ int					ft_monitor_sim(t_info *m_str, pthread_t *philo_ids);
 int					ft_monitor_out(t_info *m_str);
 
 int					ft_init_philo_data(t_info *m_str);
+void				ft_init_semaphores(t_info *m_str);
 void				*ft_init_philo_strs(t_info *m_str);
 void				*ft_init_mutex_table(t_info *m_str);
 

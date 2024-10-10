@@ -27,8 +27,8 @@ typedef struct s_philo_info
 	int				im_out;
 	int				*end_status;
 
-	pthread_mutex_t	*print_auth;
-	pthread_mutex_t	*global_auth;
+	sem_t			*print_auth;
+	sem_t			*global_auth;
 	pthread_mutex_t	*mutex_table;
 
 }	t_philo_info;
@@ -45,8 +45,8 @@ typedef struct s_info
 
 	int				end_status;
 
-	pthread_mutex_t	print_auth;
-	pthread_mutex_t	global_auth;
+	sem_t			*print_auth;
+	sem_t			*global_auth;
 	pthread_mutex_t	*mutex_table;
 
 }	t_info;

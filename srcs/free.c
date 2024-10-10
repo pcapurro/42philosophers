@@ -11,8 +11,10 @@ void	ft_destroy_everything(t_info *m_str)
 	i = 0;
 	if (m_str->mutex_table)
 		free(m_str->mutex_table);
-	pthread_mutex_destroy(&m_str->global_auth);
-	pthread_mutex_destroy(&m_str->print_auth);
+	sem_close(m_str->global_auth);
+	sem_unlink("/global");
+	sem_close(m_str->print_auth);
+	sem_unlink("/print");
 	if (m_str->philo_array)
 		free(m_str->philo_array);
 }
