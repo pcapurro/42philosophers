@@ -70,6 +70,12 @@ static char	**ft_verify_consistency(char **str)
 		ft_free_double(str);
 		return (NULL);
 	}
+	if (ft_atoi(str[1]) < 60 || ft_atoi(str[2]) < 60 || ft_atoi(str[3]) < 60)
+	{
+		ft_putstr_fd("Error!\nIllegal value(s) set.\n", 2);
+		ft_free_double(str);
+		return (NULL);
+	}
 	return (str);
 }
 

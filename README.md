@@ -12,4 +12,4 @@ All the paramaters of the simulation can be set by the user.
 
 Usage: `./philo [numbers_of_philosophers] [time_to_die] [time_to_eat] [time_to_sleep] [meals_number]`
 
-Time values are in milliseconds and can't exceed 60. Last argument is optionnal.
+Time values are in milliseconds and can't be less than 60. Last argument is optionnal.
